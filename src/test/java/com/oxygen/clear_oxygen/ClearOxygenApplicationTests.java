@@ -1,0 +1,13 @@
+package com.oxygen.clear_oxygen;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ClearOxygenApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
