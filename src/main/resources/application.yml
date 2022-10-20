@@ -1,2 +1,2 @@
-port:
-  server: 0202
+server:
+  port: 8080
