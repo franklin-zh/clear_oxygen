@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="com.oxygen.clear_oxygen.dao.SysUserMapper">
+
+    <resultMap id="all" type="com.oxygen.clear_oxygen.PO.SysUser">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="userType" column="user_type"/>
+        <result property="phoneNumber" column="phonenumber"/>
+        <result property="sex" column="sex"/>
+        <result property="avatar" column="avatar"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="loginIp" column="login_ip"/>
+        <result property="loginDate" column="login_date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="all">
+        select user_id, user_name, nick_name, user_type, phonenumber, sex, avatar, password, status, del_flag, login_ip, login_date, create_by, create_time, update_by, update_time, remark from sys_user
+    </sql>
+
+    <select id="getSysUser" resultMap="all" parameterType="com.oxygen.clear_oxygen.PO.SysUser">
+        <include refid="all"></include>
+        <where>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="userName != null and userName != ''">and user_name = #{userName}</if>
+            <if test="nickName != null and nickName != ''">and nick_name = #{nickName}</if>
+            <if test="userType != null and userType != 0">and user_type = #{userType}</if>
+            <if test="phoneNumber != null and phoneNumber != ''">and phonenumber = #{phoneNumber}</if>
+            <if test="sex != null and sex != 0">and sex = #{sex}</if>
+            <if test="avatar != null and avatar != ''">and avatar = #{avatar}</if>
+            <if test="password != null and password != ''">and password = #{password}</if>
+            <if test="status != null and status != 0">and status = #{status}</if>
+            <if test="delFlag != null and delFlag != 0">and del_flag = #{delFlag}</if>
+            <if test="loginIp != null and loginIp != ''">and login_ip = #{loginIp}</if>
+            <if test="loginDate != null and loginDate != ''">and login_date = #{loginDate}</if>
+            <if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="updateBy != null and updateBy != ''">and update_by = #{updateBy}</if>
+            <if test="updateTime != null and updateTime != ''">and update_time = #{updateTime}</if>
+            <if test="remark != null and remark != ''">and remark = #{remark}</if>
+        </where>
+    </select>
+
+</mapper>
