@@ -10,4 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface SysUserMapper {
 
     SysUser getSysUser(SysUser sysUser);
+
+    Boolean addSysUser(SysUser sysUser);
 }

@@ -45,4 +45,15 @@ class ClearOxygenApplicationTests {
         }
     }
 
+    @Test
+    void demo1(){
+        SysUser sysUser = new SysUser();
+        sysUser.setUserId(2121212L);
+        sysUser.setUserName("franklin");
+        sysUser.setPassword("123123");
+        sysUser.setNickName("哈哈哈");
+        Boolean aBoolean = sysUserMapper.addSysUser(sysUser);
+        System.out.println(aBoolean);
+    }
+
 }

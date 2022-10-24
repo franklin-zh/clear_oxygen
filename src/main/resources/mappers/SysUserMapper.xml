@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--suppress ALL -->
+<!-- sys_user -->
 <mapper namespace="com.oxygen.clear_oxygen.dao.SysUserMapper">
 
     <resultMap id="all" type="com.oxygen.clear_oxygen.PO.SysUser">
@@ -25,12 +25,29 @@
         <result property="remark" column="remark"/>
     </resultMap>
 
-    <sql id="all">
-        select user_id, user_name, nick_name, user_type, phonenumber, sex, avatar, password, status, del_flag, login_ip, login_date, create_by, create_time, update_by, update_time, remark from sys_user
+    <sql id="select_all">
+        select user_id,
+               user_name,
+               nick_name,
+               user_type,
+               phonenumber,
+               sex,
+               avatar,
+               password,
+               status,
+               del_flag,
+               login_ip,
+               login_date,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               remark
+        from sys_user
     </sql>
 
     <select id="getSysUser" resultMap="all" parameterType="com.oxygen.clear_oxygen.PO.SysUser">
-        <include refid="all"></include>
+        <include refid="select_all"> </include>
         <where>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="userName != null and userName != ''">and user_name = #{userName}</if>
@@ -51,5 +68,51 @@
             <if test="remark != null and remark != ''">and remark = #{remark}</if>
         </where>
     </select>
+
+    <insert id="addSysUser" parameterType="com.oxygen.clear_oxygen.PO.SysUser">
+        insert into
+        sys_user(
+        <trim suffixOverrides=",">
+            <if test="userId != null and userId != ''">user_id,</if>
+            <if test="userName != null and userName != ''">user_name,</if>
+            <if test="nickName != null and nickName != ''">nick_name,</if>
+            <if test="userType != null and userType != 0">user_type,</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phonenumber,</if>
+            <if test="sex != null and sex != 0">sex,</if>
+            <if test="avatar != null and avatar != ''">avatar,</if>
+            <if test="password != null and password != ''">password,</if>
+            <if test="status != null and status != 0">status,</if>
+            <if test="delFlag != null and delFlag != 0">del_flag,</if>
+            <if test="loginIp != null and loginIp != ''">login_ip,</if>
+            <if test="loginDate != null and loginDate != ''">login_date,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            <if test="createTime != null and createTime != ''">create_time,</if>
+            <if test="updateBy != null and updateBy != ''">update_by,</if>
+            <if test="updateTime != null and updateTime != ''">update_time,</if>
+            <if test="remark != null and remark != ''">remark</if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="userId != null and userId != ''">#{userId},</if>
+            <if test="userName != null and userName != ''">#{userName},</if>
+            <if test="nickName != null and nickName != ''">#{nickName},</if>
+            <if test="userType != null and userType != 0">#{userType},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
+            <if test="sex != null and sex != 0">#{sex},</if>
+            <if test="avatar != null and avatar != ''">#{avatar},</if>
+            <if test="password != null and password != ''">#{password},</if>
+            <if test="status != null and status != 0">#{status},</if>
+            <if test="delFlag != null and delFlag != 0">#{delFlag},</if>
+            <if test="loginIp != null and loginIp != ''">#{loginIp},</if>
+            <if test="loginDate != null and loginDate != ''">#{loginDate},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            <if test="createTime != null and createTime != ''">#{createTime},</if>
+            <if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null and updateTime != ''">= #{updateTime},</if>
+            <if test="remark != null and remark != ''">#{remark}</if>
+        </trim>
+        )
+    </insert>
 
 </mapper>
