@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         SysUser user = new SysUser();
         user.setUserName(username);
 
-        SysUser sysUser = sysUserMapper.getSysUser(user);
+        SysUser sysUser = sysUserMapper.getSysUser(user).get(0);
 
         if (sysUser == null){
             throw new RuntimeException("用户名不存在");

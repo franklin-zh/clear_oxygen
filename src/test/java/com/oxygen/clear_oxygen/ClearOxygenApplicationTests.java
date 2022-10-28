@@ -25,9 +25,11 @@ class ClearOxygenApplicationTests {
     @Test
     void contextLoads() {
         SysUser user = new SysUser();
-        user.setAvatar("dududu");
-        SysUser sysUser = sysUserMapper.getSysUser(user);
-        System.out.println(sysUser);
+        List<SysUser> sysUser = sysUserMapper.getSysUser(user);
+        for (SysUser s :
+                sysUser) {
+            System.out.println(s);
+        }
     }
 
     @Test
@@ -54,6 +56,21 @@ class ClearOxygenApplicationTests {
         sysUser.setNickName("哈哈哈");
         Boolean aBoolean = sysUserMapper.addSysUser(sysUser);
         System.out.println(aBoolean);
+    }
+
+    @Test
+    void demo2(){
+        SysUser sysUser = new SysUser();
+        sysUser.setUserId(2121212L);
+        sysUser.setNickName("呵呵呵");
+        sysUser.setUserName("zhengkaibin");
+        System.out.println(sysUserMapper.setSysUser(sysUser));
+    }
+
+    @Test
+    void demo3(){
+        boolean b = sysUserMapper.delSysUser(1L);
+        System.out.println(b);
     }
 
 }

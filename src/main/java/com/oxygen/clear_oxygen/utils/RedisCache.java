@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-@SuppressWarnings(value = { "unchecked", "rawtypes" })
 @Component
 public class RedisCache
 {
@@ -144,8 +143,8 @@ public class RedisCache
     /**
      * 获得缓存的set
      *
-     * @param key
-     * @return
+     * @param key 缓存键值
+     * @return Set
      */
     public <T> Set<T> getCacheSet(final String key)
     {
